@@ -1,0 +1,102 @@
+digraph MinimalDIRACAgent {
+  graph [
+    rankdir=TB,
+    bgcolor="#F8FAFC",
+    pad=0.35,
+    nodesep=0.55,
+    ranksep=0.62,
+    splines=polyline,
+    fontname="Helvetica",
+    label="Minimal autonomous DIRAC AI agent",
+    labelloc=t,
+    fontsize=21,
+    fontcolor="#0F172A"
+  ];
+  node [
+    shape=box,
+    style="rounded,filled",
+    color="#CBD5E1",
+    fillcolor="white",
+    fontcolor="#0F172A",
+    fontname="Helvetica",
+    fontsize=11,
+    margin="0.18,0.11"
+  ];
+  edge [
+    color="#64748B",
+    fontcolor="#475569",
+    fontname="Helvetica",
+    fontsize=9,
+    arrowsize=0.72
+  ];
+
+  hourly [label="1  Hourly trigger", fillcolor="#EDE9FE", color="#8B5CF6"];
+  agent [
+    label="2  Agent controller\nfetch recent SiteDirector logs\ncontinue until a final decision",
+    fillcolor="#DBEAFE",
+    color="#3B82F6"
+  ];
+  llm [
+    label="3  LLM reasons over\nall collected evidence",
+    fillcolor="#EDE9FE",
+    color="#8B5CF6"
+  ];
+  need [
+    shape=diamond,
+    label="Need more\nevidence?",
+    fillcolor="#FEF3C7",
+    color="#F59E0B"
+  ];
+  validate_tool [
+    label="4a  Validate exactly one\nallowlisted tool and its arguments",
+    fillcolor="#DBEAFE",
+    color="#3B82F6"
+  ];
+  mcp [
+    label="5  Read-only MCP\nget_logs\nget_service_status",
+    fillcolor="#DCFCE7",
+    color="#22C55E"
+  ];
+  sources [
+    shape=cylinder,
+    label="Approved DIRAC logs\nand service status",
+    fillcolor="#F1F5F9"
+  ];
+  validate_final [
+    label="4b  Validate final JSON\naction + ticket",
+    fillcolor="#DBEAFE",
+    color="#3B82F6"
+  ];
+  result [
+    shape=diamond,
+    label="Final result",
+    fillcolor="#FFEDD5",
+    color="#F97316"
+  ];
+  ticket [
+    label="ticket\nprint complete ticket string",
+    fillcolor="#FEE2E2",
+    color="#EF4444"
+  ];
+  no_action [
+    label="no_action\nprint null ticket",
+    fillcolor="#E2E8F0",
+    color="#64748B"
+  ];
+
+  { rank=same; validate_tool; validate_final; }
+  { rank=same; mcp; result; }
+  { rank=same; ticket; no_action; }
+
+  hourly -> agent [label="start cycle"];
+  agent -> llm [label="initial or new evidence"];
+  llm -> need [label="one response form"];
+  need -> validate_tool [label="yes: one tool call", color="#2563EB"];
+  validate_tool -> mcp [label="approved request"];
+  mcp -> sources [label="read only"];
+  sources -> agent [label="structured evidence", color="#2563EB"];
+  need -> validate_final [label="no: final JSON", color="#7C3AED"];
+  validate_final -> result [label="valid"];
+  result -> ticket [label="action=ticket"];
+  result -> no_action [label="action=no_action"];
+}

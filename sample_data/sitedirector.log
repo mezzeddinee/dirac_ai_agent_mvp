@@ -1,0 +1,8 @@
+2026-11-12 09:30:00 UTC WorkloadManagement/SiteDirector INFO: Total jobs : number of task queues : number of waiting pilots 180 : 1 : 205
+2026-11-12 09:30:00 UTC WorkloadManagement/SiteDirector INFO: SiteDirectorRandom: sorting 12 queues with random ordering
+2026-11-12 09:30:01 UTC WorkloadManagement/SiteDirector INFO: Total number of pilots submitted in this cycle 0
+2026-11-12 09:30:01 UTC WorkloadManagement/SiteDirector NOTICE: Cycle was successful
+2026-11-12 09:35:00 UTC WorkloadManagement/SiteDirector INFO: Total jobs : number of task queues : number of waiting pilots 176 : 1 : 201
+2026-11-12 09:35:01 UTC WorkloadManagement/SiteDirector INFO: Total number of pilots submitted in this cycle 0
+2026-11-12 09:35:01 UTC WorkloadManagement/SiteDirector NOTICE: Cycle was successful
+

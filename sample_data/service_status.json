@@ -1,0 +1,13 @@
+{
+  "WorkloadManagement/JobMonitoring": {
+    "status": "AVAILABLE",
+    "checked_at": "2026-11-12T09:36:00Z",
+    "evidence": "The sample client completed a JobMonitoring query successfully after restart."
+  },
+  "WorkloadManagement/SiteDirector": {
+    "status": "RUNNING",
+    "checked_at": "2026-11-12T09:36:00Z",
+    "evidence": "Recent cycles completed successfully; no crash or submission error is present."
+  }
+}
+

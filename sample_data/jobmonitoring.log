@@ -1,0 +1,5 @@
+2026-11-12 09:30:49 UTC CTAO/GreenReporting ERROR: Cannot get URL for WorkloadManagement/JobMonitoring in setup CTA: Option /DIRAC/Setups/CTA/WorkloadManagement is not defined
+2026-11-12 09:30:49 UTC CTAO/GreenReporting INFO: Cycle finished with DIRAC failures=1; sleeping 120s
+2026-11-12 09:35:32 UTC CTAO/GreenReporting INFO: Connection to CTAO JobMonitoring succeeded: 5 job(s) returned
+2026-11-12 09:35:57 UTC CTAO/GreenReporting INFO: Cycle finished with DIRAC failures=0; sleeping 120s
+
